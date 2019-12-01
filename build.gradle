@@ -24,11 +24,26 @@ dependencies {
     implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.1'
     compileOnly 'org.projectlombok:lombok'
     runtimeOnly 'mysql:mysql-connector-java'
+
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
+
+    /* redis */
+    // spring-data-redis
+    compile('org.springframework.boot:spring-boot-starter-data-redis')
+
+    //embedded-redis
+    compile group: 'it.ozimov', name: 'embedded-redis', version: '0.7.2'
+
+    // https://mvnrepository.com/artifact/com.graphql-java/graphql-spring-boot-starter
+    compile group: 'com.graphql-java', name: 'graphql-spring-boot-starter', version: '5.0.2'
+
+    // https://mvnrepository.com/artifact/com.graphql-java/graphql-java-tools
+    compile group: 'com.graphql-java', name: 'graphql-java-tools', version: '5.2.4'
+
 }
 
 test {
