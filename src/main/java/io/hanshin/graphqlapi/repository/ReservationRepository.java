@@ -9,9 +9,9 @@ import java.util.List;
 
 public interface ReservationRepository extends JpaRepository<Reservation, Long> {
 
-    List<Reservation> findByConferenceRoomAndStartDtAfterAndEndDtBefore(ConferenceRoom conferenceRoom,
-                                                                        LocalDateTime endDt,
-                                                                        LocalDateTime startDt);
+    List<Reservation> findByConferenceRoomAndStartDtGreaterThanEqualAndEndDtLessThanEqual(ConferenceRoom conferenceRoom,
+                                                                        LocalDateTime startDt,
+                                                                        LocalDateTime endDt);
 
 
 

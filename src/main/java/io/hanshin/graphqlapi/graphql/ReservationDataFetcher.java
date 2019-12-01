@@ -30,18 +30,18 @@ public class ReservationDataFetcher implements DataFetcher<Reservation> {
 
 
     @Override
-    public Reservation get(DataFetchingEnvironment environment) {
+    public Reservation get(DataFetchingEnvironment environment) throws Exception {
         ConferenceRoom conferenceRoom = conferenceRoomRepository.getOne(((Integer)(environment.getArgument("ConferenceRoom"))).longValue());
         LocalDateTime startDt = LocalDateTime.parse(environment.getArgument("start_dt"));
         LocalDateTime endDt = LocalDateTime.parse(environment.getArgument("end_dt"));
-        List<Reservation> reservationList = reservationRepository.findByConferenceRoomAndStartDtAfterAndEndDtBefore(
+        List<Reservation> reservationList = reservationRepository.findByConferenceRoomAndStartDtGreaterThanEqualAndEndDtLessThanEqual(
                 conferenceRoom,
-                endDt,
-                startDt
+                startDt,
+                endDt
         );
 
         if(reservationList.size() > 0){
-            return null;
+            throw new Exception("이미예약됨");
         }
 
         User user = userRepository.getOne(((Integer)environment.getArgument("User")).longValue());
