@@ -1,7 +1,7 @@
 package io.hanshin.graphqlapi.repository;
 
-import io.hanshin.graphqlapi.model.ConferenceRoom;
-import io.hanshin.graphqlapi.model.Reservation;
+import io.hanshin.graphqlapi.model.entity.ConferenceRoom;
+import io.hanshin.graphqlapi.model.entity.Reservation;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.time.LocalDateTime;

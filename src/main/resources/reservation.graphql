@@ -4,9 +4,9 @@ schema{
 }
 
 type Query {
-    user:[User],
-    conferenceRoom :[ConferenceRoom],
-    reservation : [Reservation],
+    users:[User],
+    conferenceRooms :[ConferenceRoom],
+    reservations : [Reservation],
     getThisWeekReservations : [Reservation],
     getEmptyConferenceRooms(start_dt : String) : [ConferenceRoom]
 }

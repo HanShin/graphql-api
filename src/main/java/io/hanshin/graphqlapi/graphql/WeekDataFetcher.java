@@ -2,7 +2,7 @@ package io.hanshin.graphqlapi.graphql;
 
 import graphql.schema.DataFetcher;
 import graphql.schema.DataFetchingEnvironment;
-import io.hanshin.graphqlapi.model.Reservation;
+import io.hanshin.graphqlapi.model.entity.Reservation;
 import io.hanshin.graphqlapi.repository.ReservationRepository;
 import org.springframework.stereotype.Component;
 

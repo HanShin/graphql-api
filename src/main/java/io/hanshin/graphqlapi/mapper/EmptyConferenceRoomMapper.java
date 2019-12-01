@@ -1,6 +1,6 @@
 package io.hanshin.graphqlapi.mapper;
 
-import io.hanshin.graphqlapi.model.ConferenceRoom;
+import io.hanshin.graphqlapi.model.entity.ConferenceRoom;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;

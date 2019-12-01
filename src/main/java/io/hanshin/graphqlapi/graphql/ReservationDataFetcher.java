@@ -2,9 +2,9 @@ package io.hanshin.graphqlapi.graphql;
 
 import graphql.schema.DataFetcher;
 import graphql.schema.DataFetchingEnvironment;
-import io.hanshin.graphqlapi.model.ConferenceRoom;
-import io.hanshin.graphqlapi.model.Reservation;
-import io.hanshin.graphqlapi.model.User;
+import io.hanshin.graphqlapi.model.entity.ConferenceRoom;
+import io.hanshin.graphqlapi.model.entity.Reservation;
+import io.hanshin.graphqlapi.model.entity.User;
 import io.hanshin.graphqlapi.repository.ConferenceRoomRepository;
 import io.hanshin.graphqlapi.repository.ReservationRepository;
 import io.hanshin.graphqlapi.repository.UserRepository;

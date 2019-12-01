@@ -3,7 +3,7 @@ package io.hanshin.graphqlapi.graphql;
 import graphql.schema.DataFetcher;
 import graphql.schema.DataFetchingEnvironment;
 import io.hanshin.graphqlapi.mapper.EmptyConferenceRoomMapper;
-import io.hanshin.graphqlapi.model.ConferenceRoom;
+import io.hanshin.graphqlapi.model.entity.ConferenceRoom;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;

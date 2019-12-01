@@ -29,13 +29,22 @@ public class GraphProvider implements GraphUseCase {
     private final ReservationDataFetcher reservationDataFetcher;
     private final EmptyRoomDataFetcher emptyRoomDataFetcher;
     private final WeekDataFetcher weekDataFetcher;
+    private final RedisConferenceRoomDataFetcher redisConferenceRoomDataFetcher;
+    private final RedisReservationDataFetcher redisReservationDataFetcher;
+    private final RedisUserDataFetcher redisUserDataFetcher;
 
     public GraphProvider(ReservationDataFetcher reservationDataFetch,
                         EmptyRoomDataFetcher emptyRoomDataFetch,
-                        WeekDataFetcher weekDataFetcher){
+                        WeekDataFetcher weekDataFetcher,
+                        RedisConferenceRoomDataFetcher redisConferenceRoomDataFetcher,
+                        RedisReservationDataFetcher redisReservationDataFetcher,
+                        RedisUserDataFetcher redisUserDataFetcher){
         this.reservationDataFetcher = reservationDataFetch;
         this.emptyRoomDataFetcher = emptyRoomDataFetch;
         this.weekDataFetcher = weekDataFetcher;
+        this.redisConferenceRoomDataFetcher = redisConferenceRoomDataFetcher;
+        this.redisReservationDataFetcher = redisReservationDataFetcher;
+        this.redisUserDataFetcher = redisUserDataFetcher;
 
     }
 
@@ -45,8 +54,11 @@ public class GraphProvider implements GraphUseCase {
         TypeDefinitionRegistry typeDefinitionRegistry = new SchemaParser().parse(schemaFile);
         RuntimeWiring runtimeWiring = RuntimeWiring.newRuntimeWiring()
                 .type("Query", typeWiring -> typeWiring
-                .dataFetcher("getThisWeekReservations", weekDataFetcher)
-                .dataFetcher("getEmptyConferenceRooms", emptyRoomDataFetcher))
+                    .dataFetcher("users", redisUserDataFetcher)
+                    .dataFetcher("conferenceRooms", redisConferenceRoomDataFetcher)
+                    .dataFetcher("reservations", redisReservationDataFetcher)
+                    .dataFetcher("getThisWeekReservations", weekDataFetcher)
+                    .dataFetcher("getEmptyConferenceRooms", emptyRoomDataFetcher))
                 .type("Mutation", typeWiring -> typeWiring
                 .dataFetcher("reservation", reservationDataFetcher))
                 .build();

@@ -29,3 +29,10 @@ logging:
     org:
       hibernate:
         type: trace
+
+cron:
+  exp:
+    redis:
+      user: 0 0 * * * ?
+      conference-room:  0 5 * * * ?
+      reservation:  0 10 * * * ?
