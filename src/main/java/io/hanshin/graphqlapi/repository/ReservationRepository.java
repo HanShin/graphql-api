@@ -15,6 +15,6 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
 
 
 
-    List<Reservation> findByStartDtAfterAndEndDtBefore(LocalDateTime endDt,
-                                                       LocalDateTime startDt);
+    List<Reservation> findByStartDtBetween(LocalDateTime startDt,
+                                           LocalDateTime endDt);
 }

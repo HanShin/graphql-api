@@ -56,6 +56,7 @@ public class GraphProvider implements GraphUseCase {
 
     @Override
     public ExecutionResult execute(String query) {
-        return null;
+        return graphQL.execute(query);
     }
+
 }

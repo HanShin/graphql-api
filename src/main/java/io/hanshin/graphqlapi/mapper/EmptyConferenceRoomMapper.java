@@ -25,7 +25,7 @@ public interface EmptyConferenceRoomMapper {
             "WHERE id not in(\n" +
             "    SELECT conference_room_id\n" +
             "    FROM reservation\n" +
-            "    WHERE'2019-12-01 17:50:58' BETWEEN reservation.start_dt AND reservation.end_dt);\n "
+            "    WHERE #{start_dt} BETWEEN reservation.start_dt AND reservation.end_dt);\n "
     )
     List<ConferenceRoom> getEmptyConferenceRoom(@Param("start_dt")LocalDateTime startDt);
 

@@ -25,9 +25,16 @@ public class WeekDataFetcher implements DataFetcher<List<Reservation>> {
         int weekValue = currentDateTime.getDayOfWeek().getValue();
 
         LocalDateTime startDt = currentDateTime
-                .minusDays(weekValue - 1);
+                .minusDays(weekValue - 1)
+                .withHour(0)
+                .withMinute(0)
+                .withSecond(0);
         LocalDateTime endDt = currentDateTime
-                .plusDays(7 - weekValue);
-        return reservationRepository.findByStartDtAfterAndEndDtBefore(endDt,startDt);
+                .plusDays(7 - weekValue)
+                .withHour(23)
+                .withMinute(59)
+                .withSecond(59);
+        List<Reservation> byStartDtBetween = reservationRepository.findByStartDtBetween(startDt, endDt);
+        return byStartDtBetween;
     }
 }

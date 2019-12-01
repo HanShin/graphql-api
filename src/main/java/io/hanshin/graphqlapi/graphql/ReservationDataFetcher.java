@@ -31,7 +31,7 @@ public class ReservationDataFetcher implements DataFetcher<Reservation> {
 
     @Override
     public Reservation get(DataFetchingEnvironment environment) {
-        ConferenceRoom conferenceRoom = conferenceRoomRepository.getOne(environment.getArgument("ConferenceRoom"));
+        ConferenceRoom conferenceRoom = conferenceRoomRepository.getOne(((Integer)(environment.getArgument("ConferenceRoom"))).longValue());
         LocalDateTime startDt = LocalDateTime.parse(environment.getArgument("start_dt"));
         LocalDateTime endDt = LocalDateTime.parse(environment.getArgument("end_dt"));
         List<Reservation> reservationList = reservationRepository.findByConferenceRoomAndStartDtAfterAndEndDtBefore(
@@ -44,7 +44,7 @@ public class ReservationDataFetcher implements DataFetcher<Reservation> {
             return null;
         }
 
-        User user = userRepository.getOne(environment.getArgument("User"));
+        User user = userRepository.getOne(((Integer)environment.getArgument("User")).longValue());
         Reservation reservation = Reservation.builder().user(user)
                 .conferenceRoom(conferenceRoom)
                 .startDt(startDt)

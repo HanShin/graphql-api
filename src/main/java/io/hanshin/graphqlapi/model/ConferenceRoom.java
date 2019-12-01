@@ -1,6 +1,5 @@
 package io.hanshin.graphqlapi.model;
 
-import io.hanshin.graphqlapi.model.enums.ConferenceRoomSize;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -12,7 +11,7 @@ import javax.persistence.*;
 @Table(name = "conference_room")
 public class ConferenceRoom {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private long id;
 
@@ -20,5 +19,5 @@ public class ConferenceRoom {
     private String name;
 
     @Column(name = "size")
-    private ConferenceRoomSize size;
+    private String size;
 }

@@ -7,8 +7,10 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 @Getter
 @Entity
@@ -16,7 +18,7 @@ import java.time.LocalDateTime;
 public class Reservation {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private long id;
 
@@ -32,6 +34,14 @@ public class Reservation {
     @Column(name = "start_dt")
     private LocalDateTime startDt;
 
+    public String getStart_dt(){
+        return this.startDt.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+    }
+
     @Column(name = "end_dt")
     private LocalDateTime endDt;
+
+    public String getEnd_dt(){
+        return this.endDt.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+    }
 }

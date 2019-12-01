@@ -3,13 +3,16 @@ schema{
     mutation: Mutation
 }
 
-type Query{
+type Query {
+    user:[User],
+    conferenceRoom :[ConferenceRoom],
+    reservation : [Reservation],
     getThisWeekReservations : [Reservation],
     getEmptyConferenceRooms(start_dt : String) : [ConferenceRoom]
 }
 
-type Mutation{
-    reservation(User : ID!, ConferenceRoom: ID! ,start_dt : String!, end_dt : String!): Reservation
+type Mutation {
+    reservation(User : Int!, ConferenceRoom: Int! ,start_dt : String!, end_dt : String!): Reservation
 }
 
 enum Size {
@@ -18,22 +21,22 @@ enum Size {
     EIGHT
 }
 
-type User{
-    id: ID!,
+type User {
+    id: Int,
     name: String,
     team: String
 }
 
-type ConferenceRoom{
-    id: ID!,
+type ConferenceRoom {
+    id: Int,
     name: String,
     size: Size
 }
 
-type Reservation{
-    user: User!
-    conferenceRoom: ConferenceRoom!,
-    start_dt : String!,
-    end_dt : String!
+type Reservation {
+    user: User
+    conferenceRoom: ConferenceRoom,
+    start_dt : String,
+    end_dt : String
 
 }
